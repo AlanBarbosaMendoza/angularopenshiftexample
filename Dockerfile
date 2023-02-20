@@ -1,4 +1,5 @@
 FROM nginx:1.13.3-alpine
+WORKDIR /usr/local/app
 
 ## Copy our nginx config
 COPY nginx/ /etc/nginx/conf.d/
@@ -7,7 +8,7 @@ COPY nginx/ /etc/nginx/conf.d/
 RUN rm -rf /usr/share/nginx/html/*
 
 ## copy over the artifacts in dist folder to default nginx public folder
-COPY dist/ /usr/share/nginx/html
+COPY /usr/local/app/dist/ /usr/share/nginx/html
 
 EXPOSE 8080
 
